@@ -52,7 +52,7 @@ public class AdminPostsAdapter extends RecyclerView.Adapter<AdminPostsAdapter.Vi
         holder.item_tv_title.setText(posts.getTitle());
         holder.item_tv_text.setText(posts.getText());
 
-        Glide.with(context)
+        Glide.with(AdminActivity.recyclerView)
                 .load(Variable.base + "images/" + posts.getImage())
                 .apply(new RequestOptions().centerCrop())
                 .into(holder.item_iv_image);

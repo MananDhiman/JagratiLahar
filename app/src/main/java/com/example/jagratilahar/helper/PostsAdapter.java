@@ -15,6 +15,7 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.bumptech.glide.Glide;
 import com.bumptech.glide.request.RequestOptions;
+import com.example.jagratilahar.activities.MainActivity;
 import com.example.jagratilahar.activities.PostViewActivity;
 
 import java.util.ArrayList;
@@ -32,10 +33,12 @@ public class PostsAdapter extends RecyclerView.Adapter<PostsAdapter.ViewHolder> 
         holder.item_tv_title.setText(posts.getTitle());
         holder.item_tv_text.setText(posts.getText());
 
-        Glide.with(context)
+        Glide.with(MainActivity.recyclerView)
                 .load(Variable.base + "images/" + posts.getImage())
                 .apply(new RequestOptions().centerCrop())
                 .into(holder.item_iv_image);
+
+
 
         holder.item_tv_readMore.setOnClickListener(v -> {
             showDetail(posts, position);
