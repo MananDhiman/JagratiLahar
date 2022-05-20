@@ -53,7 +53,8 @@ public class MainActivity extends AppCompatActivity {
         recyclerView.setHasFixedSize(true);
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
 
-        StringRequest request = new StringRequest(StringRequest.Method.POST, Variable.show_posts, response -> {
+        StringRequest request = new StringRequest(StringRequest.Method.POST, Variable.show_posts,
+                response -> {
             try {
                 JSONArray array = new JSONArray(response);
 
@@ -80,7 +81,8 @@ public class MainActivity extends AppCompatActivity {
             }
         },error -> {
             error.printStackTrace();
-            //Toast.makeText(this, "Please Make Sure Your Internet Is Working", Toast.LENGTH_LONG).show();
+            //Toast.makeText(this, "Please Make Sure Your Internet Is Working", Toast.LENGTH_LONG)
+            //.show();
         }){
             @Override
             protected Response<String> parseNetworkResponse(NetworkResponse response){

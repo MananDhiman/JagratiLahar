@@ -40,7 +40,11 @@ public class PostsAdapter extends RecyclerView.Adapter<PostsAdapter.ViewHolder> 
 
 
 
-        holder.item_tv_readMore.setOnClickListener(v -> {
+        /*holder.item_tv_readMore.setOnClickListener(v -> {
+            showDetail(posts, position);
+        });
+        */
+        holder.itemLayout.setOnClickListener(v -> {
             showDetail(posts, position);
         });
     }
