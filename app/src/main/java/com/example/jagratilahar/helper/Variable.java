@@ -11,4 +11,6 @@ public class Variable {
 
     public static final String login_user = base + "login/login.php";
 
+    public static final String test = "test";
+
 }
