@@ -110,7 +110,7 @@ public class AdminActivity extends AppCompatActivity {
                         e.printStackTrace();
                     }
                 }
-                return  super.parseNetworkResponse(response);
+                return super.parseNetworkResponse(response);
             }
         };
         Volley.newRequestQueue(getApplicationContext()).add(request);

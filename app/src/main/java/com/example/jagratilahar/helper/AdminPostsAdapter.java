@@ -31,9 +31,9 @@ import com.example.jagratilahar.R;
 
 public class AdminPostsAdapter extends RecyclerView.Adapter<AdminPostsAdapter.ViewHolder>{
 
-    private Context context;
+    private final Context context;
     private View view;
-    private ArrayList<Posts> postsArrayList;
+    private final ArrayList<Posts> postsArrayList;
 
     @NonNull
     @Override

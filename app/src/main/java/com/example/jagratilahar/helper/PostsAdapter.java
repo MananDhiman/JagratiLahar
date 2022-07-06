@@ -22,9 +22,9 @@ import java.util.ArrayList;
 
 public class PostsAdapter extends RecyclerView.Adapter<PostsAdapter.ViewHolder> {
 
-    private Context context;
+    private final Context context;
     private View view;
-    private ArrayList<Posts> postsArrayList;
+    private final ArrayList<Posts> postsArrayList;
 
     @Override
     public void onBindViewHolder(@NonNull ViewHolder holder, int position) {

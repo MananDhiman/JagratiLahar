@@ -14,8 +14,6 @@ import com.example.jagratilahar.R;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
-import android.widget.Toast;
-
 import com.android.volley.NetworkResponse;
 import com.android.volley.Response;
 import com.android.volley.toolbox.StringRequest;
@@ -27,6 +25,7 @@ import com.example.jagratilahar.helper.Variable;
 import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
+
 
 import java.util.ArrayList;
 
@@ -49,16 +48,20 @@ public class MainActivity extends AppCompatActivity {
     private void loadPosts() {
 
         postsArrayList = new ArrayList<>();
+
         recyclerView = findViewById(R.id.rv_item);
         recyclerView.setHasFixedSize(true);
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
 
+        // Toast.makeText(this, "Please Make Sure Your Internet Is Working", Toast.LENGTH_LONG)
+        // .show();
         StringRequest request = new StringRequest(StringRequest.Method.POST, Variable.show_posts,
                 response -> {
             try {
                 JSONArray array = new JSONArray(response);
 
                 for (int i = 0; i < array.length(); i++){
+                    postsArrayList.clear(); //prevents duplication of items in MainActivity Recycler View
                     JSONObject object = array.getJSONObject(i);
 
                     Posts posts = new Posts();
@@ -71,6 +74,7 @@ public class MainActivity extends AppCompatActivity {
                     posts.setTime(object.getString("time"));
 
                     postsArrayList.add(posts);
+
                 }
                 postsAdapter = new PostsAdapter(MainActivity.this, postsArrayList);
                 recyclerView.setAdapter(postsAdapter);
@@ -79,15 +83,11 @@ public class MainActivity extends AppCompatActivity {
                 e.printStackTrace();
                // Toast.makeText(this, "There seems to be some technical difficulty, Please Try Again", Toast.LENGTH_SHORT).show();
             }
-        },error -> {
-            error.printStackTrace();
-            //Toast.makeText(this, "Please Make Sure Your Internet Is Working", Toast.LENGTH_LONG)
-            //.show();
-        }){
+        }, Throwable::printStackTrace){
             @Override
             protected Response<String> parseNetworkResponse(NetworkResponse response){
                 if (response.statusCode == 200){
-                    JSONArray array = null;
+                    JSONArray array;
                     try {
                         array = new JSONArray(response);
 
